@@ -1,0 +1,1014 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* only the top-level nav list is flex */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+/* ===========================
+   SERVICES HERO
+=========================== */
+
+.services-hero-bg {
+    position: relative;
+    height: 60vh;
+    background-image: url("../services/orlin&cohen copy.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 20, 36, 0.65);
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.services-hero-title {
+    font-family: "Georgia", serif;
+    font-size: 4rem;
+    font-weight: 501;
+}
+
+.services-hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    font-family: "Georgia", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 900px) {
+    .services-hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* ================================
+   RESEARCH OVERVIEW SECTION
+=================================== */
+
+.research-overview {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.research-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.research-text {
+    flex: 1.5;
+}
+
+.research-text h2 {
+    font-family: "Georgia", serif; /* match your other headings */
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.research-text p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333333;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+}
+
+.research-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.research-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    object-fit: cover;
+}
+
+/* Stack on mobile */
+@media (max-width: 900px) {
+    .research-overview {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .research-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .research-image {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 1.5rem;
+    }
+}
+
+.intro-divider {
+    width: 100%;
+    max-width: 1200px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+/* ================================
+   FEATURED PUBLICATIONS SECTION
+=================================== */
+
+.featured-pubs {
+    background-color: #0b1736; /* deep navy backdrop */
+    padding: 5rem 3.5rem;
+}
+
+.featured-pubs-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.featured-pubs h2 {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #f9fafb;
+    margin-bottom: 2.5rem;
+    margin-top: 0.5rem;
+    padding-left: 0.2rem;
+}
+
+/* Grid layout */
+.pubs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+}
+
+/* Individual cards */
+.pub-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.75rem 1.75rem 1.5rem;
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.pub-type {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+.pub-title {
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #0F224F;
+    margin-bottom: 0.75rem;
+    font-weight: normal;
+}
+
+.pub-meta {
+    font-size: 0.9rem;
+    color: #0F224F;
+    margin-bottom: 1.25rem;
+}
+
+/* Card button */
+.pub-card-btn {
+    margin-top: auto; /* pushes button to bottom */
+    align-self: flex-start;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #f97316;
+    text-decoration: none;
+    color: #f97316;
+    font-weight: 500;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.pub-card-btn:hover {
+    background-color: #f97316;
+    color: #111827;
+    transform: translateY(-1px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .featured-pubs {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .featured-pubs h2 {
+        font-size: 2rem;
+    }
+}
+
+.empty-space {
+    height: 3rem;
+}
+
+/* ================================
+   RESEARCH FOCUS AREAS
+=================================== */
+
+.research-focus {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.research-focus-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.research-focus-title {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.research-focus-intro {
+    max-width: 720px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 2.5rem;
+}
+
+/* 3-column grid */
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.focus-item {
+    background-color: #f9fafb;
+    border-radius: 1.5rem;
+    padding: 1.75rem 1.75rem 1.9rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* Icon circle */
+.focus-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background-color: #0b1736; /* navy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.focus-icon span {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+/* Text */
+.focus-item h3 {
+    font-size: 1.05rem;
+    color: #111827;
+    margin-bottom: 0.6rem;
+}
+
+.focus-item p {
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+/* Mobile padding */
+@media (max-width: 900px) {
+    .research-focus {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .research-focus-title {
+        font-size: 45px;
+    }
+}
+
+/* ================================
+   MEDIA FEATURE SPOTLIGHT
+=================================== */
+
+.media-features {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.media-features-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Heading + intro */
+.media-features-title {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 0.75rem;
+}
+
+/* Optional orange underline */
+.media-features-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #f97316;
+    margin-top: 0.75rem;
+}
+
+.media-features-intro {
+    max-width: 760px;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 2.25rem;
+}
+
+/* 3-column grid on desktop */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Card base */
+.media-card {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
+    padding-bottom: 1.5rem;
+}
+
+.media-card:hover {
+    border: 2px solid #f97316;
+}
+
+/* Thumbnail image */
+.media-thumb img {
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Tag / outlet / title / button spacing */
+.media-tag {
+    margin-top: 1.2rem;
+    padding: 0 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #9ca3af;
+    letter-spacing: 0.08em;
+}
+
+.media-meta-row {
+    padding: 0.4rem 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.media-title {
+    padding: 0 1.5rem;
+    margin: 0.75rem 0 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.5;
+}
+
+/* Button with side padding & not on the edge */
+.media-btn {
+    margin: auto 1.5rem 1.4rem 1.5rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #111827;
+    color: #111827;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.media-btn:hover {
+    background-color: #111827;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Mobile: stack cards 1 per row */
+@media (max-width: 900px) {
+    .media-features {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .media-features-title {
+        font-size: 2rem;
+    }
+
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.space {
+    height: 5rem;
+}
+
+.line {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+/* ================================
+   ADDITIONAL MEDIA (SMALL CARDS)
+=================================== */
+
+.extra-media {
+    padding: 4rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.extra-media-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.extra-media-title {
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #111827;
+    margin-bottom: 2rem;
+}
+
+/* Grid: 3 small cards */
+.extra-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+/* Card style */
+.extra-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Icon placeholder */
+.extra-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background-color: #0b1736;
+    color: #ffffff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* Tag */
+.extra-tag {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 0.4rem;
+}
+
+/* Title */
+.extra-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+/* Meta line */
+.extra-meta {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 1.2rem;
+}
+
+/* Button */
+.extra-btn {
+    margin-top: auto;
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #111827;
+    color: #111827;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.extra-btn:hover {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+    .extra-media {
+        padding: 3rem 1.5rem;
+    }
+
+    .extra-media-title {
+        font-size: 1.7rem;
+    }
+}
+
+/* ================================
+   FINAL CTA SECTION
+=================================== */
+
+.media-cta {
+    background-color: #ffffff;
+    padding: 4rem 3.5rem 5rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.media-cta-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.media-cta-text {
+    font-size: 1.25rem;
+    color: #111827;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Main links */
+.media-cta-link {
+    color: #f97316;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 0.25rem;
+}
+
+.media-cta-link:hover {
+    text-decoration: underline;
+}
+
+/* The "or" between the links */
+.media-cta-or {
+    color: #6b7280;
+    font-weight: 400;
+    margin: 0 0.35rem;
+}
+
+/* Appointment link styled just a bit stronger */
+.media-cta-appointment {
+    color: #111827;
+    border-bottom: 1px solid #111827;
+    padding-bottom: 2px;
+}
+
+.media-cta-appointment:hover {
+    color: #ffffff;
+    background-color: #111827;
+    border-color: #111827;
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+    .media-cta {
+        padding: 3rem 1.5rem 4rem;
+    }
+
+    .media-cta-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* ==========================================
+   ORANGE UNDERLINE FOR RESEARCH HEADINGS
+   (ONLY headings with .section-title-accent)
+========================================== */
+
+.section-title-accent {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.section-title-accent::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #f97316;
+    margin-top: 0.75rem;
+}
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff;
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342;
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Responsive: tighter and centered on mobile/tablet */
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+/* icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* copyright */
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.empty-space {
+    height: 7rem;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>James A. Germano, M.D. | Orthopedic Surgeon</title>
+
+    <!--what does this do-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to your CSS -->
+    <!--importing any fonts into the doc-->
+    <link href="https://fonts.googleapis.com/css2?family=IM+FELL+French+Canon+SC&family=Inria+Serif:wght@400;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="locations/styles5.css">
+</head>
+<body>
+
+<!--thin line above the site-->
+<section class="home-line">
+    <div class="home-line-top"></div>
+</section>
+
+
+<!--creation of the top-->
+<header class="site-header">
+    <div class="nav-inner">
+
+        <!-- creation of the logo and name for the website-->
+        <!--**NOTE: Upload the hip image and make sure its linked properly-->
+        <a href="index.html" class="logo">
+            <img src="images/germano-hip-icon.png" alt="Hip & Knee logo" class="logo-icon">
+
+            <div class="logo-text">
+                <div class="logo-name">James A. Germano, M.D.</div>
+                <div class="logo-tagline">Orthopedic Surgeon · Hip &amp; Knee Reconstruction Specialist</div>
+            </div>
+        </a>
+
+        <!--creation of the navigation bar and links to their pages-->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" >About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="media.html">Research &amp; Media</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="patients.html">
+                        Patients
+                        <span class="nav-caret">▾</span>
+                    </a>
+
+                    <ul class="nav-dropdown">
+                        <li>
+                            <a href="patients.html">
+                                New &amp; Returning Patient Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patient-testimonials.html">
+                                Patient Testimonials
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="locations.html" class="active">Locations</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!--hero section stolen from services-->
+
+<section class="services-hero-bg">
+    <div class="services-hero-overlay"></div>
+
+    <div class="services-hero-content">
+        <h1 class="services-hero-title">Locations</h1>
+        <p class="hero-subtitle">
+            Serving patients at several convenient Long Island locations.
+        </p>
+
+    </div>
+</section>
+
+
+<main>
+    <!-- HERO SECTION ALREADY HERE -->
+
+
+    <!-- ================================
+         OFFICE LOCATIONS (CUBES)
+         ================================ -->
+    <!-- ================================
+     OFFICE LOCATIONS
+================================ -->
+    <section class="locations-offices">
+        <div class="locations-offices-inner">
+            <h2 class="locations-heading">Office Locations</h2>
+            <p class="locations-subtitle">
+                Convenient Orlin &amp; Cohen offices across Long Island, so you can choose the location that fits your schedule and comfort best.
+            </p>
+
+            <div class="locations-grid">
+
+                <article class="location-card">
+                    <h3 class="location-name">Garden City Office</h3>
+                    <p class="location-detail">
+                        1101 Stewart Avenue<br>
+                        Garden City, NY 11530<br>
+                        tel: +1 516-279-3352
+                    </p>
+                    <a class="location-link" href="https://www.google.com/maps?q=1101+Stewart+Ave+Garden+City+NY" target="_blank">
+                        Get Directions &rarr;
+                    </a>
+                </article>
+
+                <article class="location-card">
+                    <h3 class="location-name">Merrick Office</h3>
+                    <p class="location-detail">
+                        1728 Sunrise Highway<br>
+                        Merrick, NY 11566<br>
+                        tel: +1 516-279-3352
+                    </p>
+                    <a class="location-link" href="https://www.google.com/maps?q=1728+Sunrise+Hwy+Merrick+NY" target="_blank">
+                        Get Directions &rarr;
+                    </a>
+                </article>
+
+                <article class="location-card">
+                    <h3 class="location-name">Bohemia Office</h3>
+                    <p class="location-detail">
+                        3480 Veterans Memorial Highway<br>
+                        Bohemia, NY 11716<br>
+                        tel: +1 631-289-0338
+                    </p>
+                    <a class="location-link" href="https://www.google.com/maps?q=3480+Veterans+Memorial+Hwy+Bohemia+NY" target="_blank">
+                        Get Directions &rarr;
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <div class="divider-1"></div>
+
+
+    <!-- ================================
+         SURGICAL HOSPITAL
+    ================================ -->
+    <section class="surgery-locations">
+        <div class="surgery-locations-inner">
+            <h2 class="locations-heading">Surgical Hospital</h2>
+            <div class="locations-divider"></div>
+
+            <div class="surgery-layout">
+                <div class="surgery-text">
+                    <h3 class="surgery-name">Long Island Jewish Valley Stream</h3>
+                    <p class="surgery-detail">
+                        Northwell Health’s Valley Stream campus, providing advanced perioperative support and a full-service
+                        hospital environment for joint reconstruction procedures.
+                    </p>
+                </div>
+                <div class="surgery-photo">
+                    <img src="locations/lij-valley-stream.jpg"
+                         alt="Long Island Jewish Valley Stream, Northwell Health">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- ================================
+         MAP SECTION (ALREADY FULL WIDTH)
+    ================================ -->
+    <section class="map-section">
+        <iframe
+                class="map-embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.667415939873!2d-73.68898627437271!3d40.68129643949529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26365060f8155%3A0x2435740fd0e57679!2sEmergency%20Department%20-%20Long%20Island%20Jewish%20Valley%20Stream!5e0!3m2!1sen!2sfr!4v1764229546287!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                allow fullscreen="";
+                loading="lazy">
+        </iframe>
+    </section>
+
+    <div class="locations-spacer"></div>
+</main>
+
+<!-- ================================
+       QUESTIONS CTA
+  ================================ -->
+<section class="appointment-cta">
+    <div class="appointment-cta-inner">
+        <p class="appointment-text">
+            Ready to schedule a consultation or follow-up appointment?
+        </p>
+        <a href="https://www.northwell.edu/find-care/find-a-doctor/dr-james-a-germano-md-1811048838" class="btn-outline-blue">
+            Request an Appointment
+        </a>
+    </div>
+</section>
+
+
+
+
+
+
+    <!-- Full-width LIJ hospital image strip -->
+<section class="hospital-strip"></section>
+
+<!--socials & copywrite-->
+
+<footer class="site-footer">
+
+    <div class="footer-line"></div>
+
+    <div class="footer-icons">
+        <a href="https://www.instagram.com/jamesgermanomd/" target="_blank" aria-label="Instagram">
+            <img src="images/icon-instagram.png" alt="Instagram">
+        </a>
+
+        <a href="https://www.linkedin.com/in/james-germano-md/" target="_blank" aria-label="LinkedIn">
+            <img src="images/icon-linkedin.png" alt="LinkedIn">
+        </a>
+
+        <a href="https://www.youtube.com/@orlincohen" target="_blank" aria-label="YouTube">
+            <img src="images/icon-youtube.png" alt="YouTube">
+        </a>
+    </div>
+
+    <p class="footer-copy">
+        © 2025 James A. Germano, M.D. All Rights Reserved.<br>
+        Website by Abigail Germano
+    </p>
+
+    <div class="empty-space"></div>
+
+
+</footer>
+
+</body>
+</html>

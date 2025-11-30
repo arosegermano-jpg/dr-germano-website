@@ -1,0 +1,1250 @@
+/* ================================
+   GLOBAL RESET
+=================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* only style the top-level nav UL */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+
+
+/* ================================
+   HERO / CAROUSEL
+=================================== */
+
+.hero {
+    position: relative;
+    height: 77vh;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+/* every slide */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* neutral, each slide overrides */
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* visible slide */
+.hero-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* overlay gradient for readability */
+.hero-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to right,
+            rgba(5, 18, 40, 0.85),
+            rgba(5, 18, 40, 0.35),
+            rgba(5, 18, 40, 0.05)
+    );
+}
+
+/* text container */
+.hero-content {
+    position: relative;
+    max-width: 480px;
+}
+
+/* SLIDE 1 – text on the RIGHT, vertically centered */
+.slide-1 {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.slide-1 .hero-content {
+    margin-right: 8%;
+    text-align: right;
+}
+
+/* SLIDE 2 – text on the LEFT, slightly higher (like mockup) */
+.slide-2 {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.slide-2 .hero-content {
+    margin-left: 6%;   /* distance from left edge */
+    margin-top: 12%;    /* distance from top edge */
+    text-align: left;
+}
+
+/* SLIDE 3 – text on the RIGHT, a little lower than center */
+.slide-3 {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.slide-3 .hero-content {
+    margin-right: 6%;
+    margin-top: 15%;    /* nudges it down a bit */
+    text-align: right;
+}
+
+/* heading + paragraph on slides */
+.hero-content h1 {
+    font-family: "Inria Serif", "Georgia", serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 3.8vw, 3.3rem); /* BIGGER */
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+}
+
+.hero-content p {
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 1.1rem;     /* was 0.95rem */
+    max-width: 30rem;
+}
+
+/* slide background images */
+.slide-1 {
+    background-image: url('images/hero1.png');
+}
+
+.slide-2 {
+    background-image: url('images/hero2.png');
+}
+
+.slide-3 {
+    background-image: url('images/hero3.png');
+}
+
+
+
+/* ================================
+   CAROUSEL DOTS
+=================================== */
+
+.hero-dots {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.hero-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hero-dot.active {
+    width: 26px;
+    background-color: #ffffff;
+}
+
+
+
+/* ================================
+   RESPONSIVE TWEAKS
+=================================== */
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+    }
+
+    .hero-content {
+        margin-right: 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+/*stats section design*/
+
+.stats-section {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+}
+
+.stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #111827;
+    letter-spacing: 0.05em;
+}
+
+.stat-label {
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-top: 0.6rem;
+    color: #374151;
+}
+
+/* vertical line between stats */
+.divider {
+    width: 1px;
+    height: 60px;
+    background-color: #12376533; /* faint navy */
+}
+
+/* responsive adjustments */
+@media (max-width: 900px) {
+    .stats-container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .divider {
+        display: none;
+    }
+}
+
+
+
+/*ABOUT PREVIEW SECTION*/
+.about-preview {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.about-photo img {
+    width: 450px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid #d1d1d1;
+}
+
+/* Text side */
+.about-text h2 {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+/* Meet Dr. Germano button */
+.meet-btn {
+    display: inline-block;
+    background-color: #111827;
+    color: #ffffff;
+    padding: 1.2rem 2.6rem;
+    border-radius: 6px;
+    font-size: 1.3rem;
+    font-family: "Roboto Condensed", sans-serif;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 4rem;
+}
+
+/* Hover turns bright orange (same as nav active) */
+.meet-btn:hover {
+    background-color: #f97316;
+    transform: translateY(-2px);
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-photo img {
+        width: 260px;
+        margin: 0 auto;
+    }
+
+    .meet-btn {
+        margin: 1rem auto 0;
+    }
+}
+
+
+
+/* ================================
+   WHY CHOOSE (REVERSED VERSION)
+=================================== */
+
+.why-choose {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.why-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* LARGE IMAGE */
+.why-image img {
+    width: 450px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid #d1d1d1;
+}
+
+/* TEXT STYLE MATCHES ABOUT SECTION EXACTLY */
+.why-text h2 {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1rem;
+}
+
+.why-text p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+/* REVERSE LAYOUT */
+.why-choose.reverse .why-wrapper {
+    flex-direction: row-reverse;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+    .why-wrapper,
+    .why-choose.reverse .why-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .why-image img {
+        width: 260px;
+        margin: 0 auto;
+    }
+}
+
+
+
+/*SERVICES CARDS AND HEADER*/
+
+.services-section {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.services-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.services-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 48px;
+    font-weight: 501;
+    text-align: center;
+    color: #0F224F;
+    margin-bottom: 3rem;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: .7rem;
+}
+
+
+/* CARD BASE STYLE */
+.service-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+    background-color: #ffffff;
+    padding: 3rem 4rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+
+    color: #111827;
+    text-align: left;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+}
+
+/* HOVER EFFECT */
+.service-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+
+    background-color: #0F224F;   /* dark navy- alters the color of the card when you hover */
+    border-color: #0F224F;
+    color: #ffffff;              /* default text color inside */
+}
+
+/* text inside the hovered card turns white */
+.service-card:hover .service-title,
+.service-card:hover .service-list li {
+    color: #ffffff;
+}
+
+/* triangle bullets also turn white */
+.service-card:hover .service-list li::before {
+    color: #ffffff;
+}
+
+/* on hover, make the navy icon appear white */
+.service-card:hover .service-icon {
+    filter: brightness(0) invert(1);
+}
+
+
+
+/* ICON STYLE — NO CIRCLE */
+.service-icon {
+    width: 140px;
+    height: auto;
+    margin-bottom: 1.4rem;
+    display: block;
+}
+
+
+/* TITLES */
+.service-title {
+    font-family: "Inria Serif", "Georgia", serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F224F;
+    line-height: 1.25;
+    margin-bottom: 1.3rem;
+}
+
+
+/* LIST */
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.6rem;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.3rem;
+    color: #111827;
+    line-height: 1.45;
+}
+
+/* triangle bullets */
+.service-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #0F224F;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .services-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+
+
+/*PATIENT TESTIMONIALS*/
+/* ================================
+   PATIENT TESTIMONIALS BANNER
+=================================== */
+
+.testimonials-section {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+/* navy lines above & below */
+.testimonials-line {
+    height: 3px;
+    width: 100%;
+    background-color: #111827;
+}
+
+.testimonials-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 320px;
+    background-image: url('images/patient.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* dark overlay so text pops */
+.testimonials-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 18, 40, 0.55);
+}
+
+/* right-side text block */
+.testimonials-content {
+    position: relative;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: 8%;
+    padding: 17rem 0 5rem; /* increased top padding to push text down */
+    text-align: right;
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonials-content h2 {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: clamp(4rem, 3.8vw, 3.3rem); /* MATCHES HERO */
+    font-weight: 501;
+    line-height: 1.1;
+    margin-bottom: 2.2rem;
+}
+
+
+/* “glass” button */
+.testimonials-btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;           /* larger button */
+    border-radius: 6px;
+    border: 2px solid #ffffff;
+    background-color: rgba(15, 34, 79, 0.2);
+    color: #ffffff;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2rem;              /* larger text */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* hover: brighter button */
+.testimonials-btn:hover {
+    background-color: #f97316;
+    color: #0F224F;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+}
+
+/* responsive adjustments */
+@media (max-width: 900px) {
+    .testimonials-content {
+        margin-left: 10%;
+        margin-right: 10%;
+        padding: 4rem 0 4rem; /* still lowered but balanced for mobile */
+        align-items: center;
+        text-align: center;
+    }
+
+    .testimonials-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .testimonials-btn {
+        padding: 1rem 2.2rem;
+        font-size: 1.05rem;
+    }
+}
+
+
+/* ================================
+   PUBLICATIONS & MEDIA
+=================================== */
+
+.pubs-section {
+    padding: 10rem 5rem;
+    background-color: #ffffff;
+}
+
+.pubs-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.pubs-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 48px;
+    font-weight: 501;
+    color: #0F224F;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* grid of news-style cards */
+.pubs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+/* individual card */
+.pub-card {
+    padding: 1.8rem 1.6rem 2.2rem;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+
+    transition: transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* hover: news card feels active */
+.pub-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    border-color: #0F224F;
+}
+
+/* small label at top */
+.pub-tag {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #6b7280;
+    margin-bottom: 0.7rem;
+}
+
+/* article headline */
+.pub-heading {
+    font-family: "Inria Serif", "Georgia", serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0F224F;
+    margin-bottom: 0.8rem;
+}
+
+/* journal + year */
+.pub-meta {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 1.3rem;
+}
+
+/* button */
+.pub-btn {
+    margin-top: auto; /* pushes button to bottom */
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    background-color: #0F224F;
+    color: #ffffff;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+
+    transition: background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.pub-card:hover .pub-btn {
+    background-color: #f97316;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+}
+
+/* responsive: 2 per row on tablet, 1 per row on mobile */
+@media (max-width: 1100px) {
+    .pubs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .pubs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Centering container */
+.readmore-container {
+    text-align: center;       /* centers inline elements */
+    margin: 4rem 0;           /* space above and below */
+}
+
+/* Button styling */
+.readmore-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 2px solid #0F224F;    /* navy outline */
+    color: #0F224F;               /* navy text */
+    background-color: #ffffff;    /* white background */
+    text-decoration: none;        /* remove underline */
+    border-radius: 6px;           /* slight rounding, clean look */
+    transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.readmore-btn:hover {
+    background-color: #0F224F;    /* navy fill on hover */
+    color: #ffffff;               /* white text on hover */
+}
+
+
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;  /* adjust taller/shorter if you want */
+    background-image: url('images/exterior.png'); /* <- use your file name */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding-top: 15px;
+
+    /* This gives the effect that the page scrolls over the image */
+    background-attachment: fixed;
+}
+
+/* ================================
+   WHITE APPOINTMENTS PANEL
+=================================== */
+
+.appointments-panel {
+    background-color: #ffffff;
+    padding: 3.5rem 3.5rem 4.5rem;
+}
+
+.appointments-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.appointments-inner h2 {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 42px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 0.75rem;
+    margin-left: auto;      /* makes sure spacing stays centered */
+    margin-right: auto;
+}
+
+.appointments-subtitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #111827;
+    max-width: 32rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CTA button – same vibe as Meet Dr. Germano */
+.appointments-btn {
+    display: inline-block;
+    padding: 1.1rem 2.8rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #111827;
+    color: #ffffff;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    margin-left: auto;      /* centers the button */
+    margin-right: auto;
+
+    transition: background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+    margin-bottom: 2.8rem;
+}
+
+.appointments-btn:hover {
+    background-color: #f97316;  /* bright orange */
+    color: #0F224F;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+}
+
+/* info pills row */
+.appointments-info-row {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+}
+
+/* each pill */
+.appt-pill {
+    flex: 1 1 0;
+    min-width: 220px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 4px 14px rgba(15, 34, 79, 0.06);
+}
+
+.pill-label {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #123765;
+    margin-bottom: 0.5rem;
+}
+
+.appt-pill p {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.90rem;
+    line-height: 1.5;
+    text-align: left;
+    color: #111827;
+}
+
+.pill-phone {
+    font-weight: 600;
+}
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+    .appointments-panel {
+        padding: 2.5rem 1.8rem 3.5rem;
+    }
+
+    .appointments-inner h2 {
+        font-size: 32px;
+    }
+
+    .appointments-info-row {
+        flex-direction: column;
+    }
+}
+
+
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff; /* pure white */
+    padding: 40px 0;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif; /* or your heading font */
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342; /* your navy */
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;   /* evenly spaced across width */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;                       /* consistent professional size */
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Responsive: tighter and centered on mobile/tablet */
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 3rem 0 2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+/* icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* copyright */
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}

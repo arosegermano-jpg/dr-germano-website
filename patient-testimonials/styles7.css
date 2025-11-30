@@ -1,0 +1,898 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* ONLY style the top-level nav UL */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+/* ===========================
+   SERVICES HERO (OTHER PAGE)
+=========================== */
+
+.services-hero-bg {
+    position: relative;
+    height: 60vh;
+    background-image: url("../services/orlin&cohen copy.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 20, 36, 0.65);
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.services-hero-title {
+    font-family: "Georgia", serif;
+    font-size: 4rem;
+    font-weight: 501;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    font-family: "Georgia", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 900px) {
+    .services-hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* ================================
+   PATIENT HERO
+=================================== */
+
+.patient-hero {
+    padding: 4rem 3.5rem 3rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.patient-hero-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+.patient-hero h1 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 1rem;
+}
+
+.patient-hero p {
+    font-family: Georgia, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+}
+
+
+
+
+
+/* ================================
+   QUOTE SECTION
+=================================== */
+/* ================================
+   QUOTE + PHOTO SECTION
+=================================== */
+
+.testimonials-quote {
+    padding: 2rem 3.5rem 1rem;
+    background-color: #ffffff;
+}
+
+.section-divider {
+    width: 92%;
+    max-width: 1300px;  /* was 1200px */
+    height: 1px;
+    background-color: #0F224F;
+    margin: 3rem auto 0 auto;
+}
+
+
+.testimonials-quote-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+/* layout like "Why Choose Dr. Germano?" */
+.quote-photo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.quote-block {
+    flex: 1.4;
+}
+
+/* quote text on the LEFT now, like the paragraph in your screenshot */
+.testimonials-quote-text {
+    font-family: Roboto, serif;
+    font-size: 1.7rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+    text-align: left;        /* was center */
+}
+
+/* name just under the quote, left-aligned */
+.testimonials-quote-attribution {
+    font-family: Georgia, serif;   /* fixed typo */
+    font-size: 1.4rem;
+    color: #6b7280;
+    line-height: 1.6;
+    text-align: right;              /* was right */
+    margin-bottom: 0;
+}
+
+.testimonials-quote-attribution strong {
+    font-weight: 600;
+    color: #0F224F;
+}
+
+/* image on the right, similar size/feel to the "Why Choose" image */
+.testimonial-quote-photo {
+    flex: 1;
+    max-width: 340px;
+    border-radius: 10%;  /* 10% rounded edges */
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+    display: block;
+}
+
+/* mobile: stack + center everything */
+@media (max-width: 900px) {
+    .quote-photo-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .quote-block {
+        text-align: center;
+    }
+
+    .testimonials-quote-text,
+    .testimonials-quote-attribution {
+        text-align: center;
+    }
+
+    .testimonial-quote-photo {
+        max-width: 270px;
+    }
+}
+
+/* ================================
+   PATIENT TESTIMONIALS SECTION
+=================================== */
+
+.testimonials-section {
+    background-color: #ffffff;
+    border-bottom: 1px solid #0F224F; /* blue line below */
+    padding-bottom: 10rem;
+    padding-top: 5rem;
+}
+
+.testimonials-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+.testimonials-heading {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 1rem;
+}
+
+.testimonials-subtitle {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+    max-width: 700px;
+}
+
+/* horizontal scroll area with 2 cards per screen on desktop */
+.testimonials-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: hidden;        /* disables scrolling */
+    padding-bottom: 0.5rem;
+    scroll-snap-type: none;    /* disables snap scrolling */
+}
+
+
+.testimonials-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.testimonials-slider::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 999px;
+}
+
+.testimonial-card {
+    flex: 0 0 calc(50% - 0.75rem);
+    min-width: 260px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    scroll-snap-align: start;
+}
+
+/* stars line */
+.testimonial-stars {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #0F224F;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* procedure label */
+.testimonial-procedure {
+    font-family: Roboto, serif;
+    font-size: 1.2rem;
+    color: #6b7280;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+}
+
+/* main quote text */
+.testimonial-text {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+}
+
+/* patient name */
+.testimonial-name {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #0F224F;
+    line-height: 1.6;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* stack full width on mobile */
+@media (max-width: 900px) {
+    .testimonials-section {
+        padding: 3.5rem 1.5rem 4rem;
+    }
+
+    .testimonials-slider {
+        gap: 1rem;
+    }
+
+    .testimonial-card {
+        flex: 0 0 100%;
+    }
+}
+
+
+
+/* Wrapper so arrows sit over the slider */
+.testimonials-slider-wrapper {
+    position: relative;
+}
+
+/* Reuse existing slider styles, but hide scrollbar visually */
+.testimonials-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.testimonials-slider::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+/* Arrow buttons */
+.testimonials-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: rgba(15, 34, 79, 0.9); /* navy */
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+    transition: background-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+    opacity: 0.9;
+    z-index: 5;
+}
+
+.testimonials-arrow-left {
+    left: -20px;
+}
+
+.testimonials-arrow-right {
+    right: -20px;
+}
+
+.testimonials-arrow:hover {
+    background-color: #f97316; /* your orange accent on hover */
+    transform: translateY(-50%) translateY(-1px);
+}
+
+/* Make arrows a bit closer / smaller on mobile */
+@media (max-width: 900px) {
+    .testimonials-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .testimonials-arrow-left {
+        left: -10px;
+    }
+
+    .testimonials-arrow-right {
+        right: -10px;
+    }
+}
+
+
+
+
+
+/* ================================
+   RATING STRIP
+=================================== */
+
+.rating-strip {
+    background-color: #ffffff;
+    border-top: 0.3px solid #0F224F;
+    border-bottom: 0.3px solid #0F224F;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.rating-strip-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+.rating-strip-inner p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.rating-highlight {
+    font-weight: 600;
+    color: #0F224F;
+}
+
+.rating-link {
+    color: #0F224F;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: bold;
+}
+
+.rating-link:hover {
+    color: #f97316;
+}
+/* ================================
+   SHARE YOUR EXPERIENCE STRIP
+=================================== */
+
+
+/* ================================
+   SHARE YOUR EXPERIENCE STRIP
+=================================== */
+
+.share-experience-strip {
+    background-color: #0F224F;
+    border-top: 2px solid #0b1736;
+    border-bottom: 2px solid #0b1736;
+    color: #ffffff;
+    padding: 6rem 3.5rem 6rem;
+}
+
+.share-experience-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+/* wrapper for side-by-side layout */
+.share-experience-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* left side = photo */
+.share-experience-photo {
+    flex: 1;
+    max-width: 360px;
+    border-radius: 10%;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+}
+
+/* right side = text + button */
+.share-experience-content {
+    flex: 1.4;
+}
+
+.share-experience-strip h3 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    font-size: 45px;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.share-experience-text {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #e5e7eb;
+    line-height: 1.6;
+    margin-bottom: 1.9rem;
+}
+
+.share-experience-btn {
+    display: inline-block;
+    padding: 0.7rem 1.75rem;
+    border-radius: 10px;
+    border: 1.5px solid #ffffff;
+    background: transparent;
+    font-family: Roboto, serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.share-experience-btn:hover {
+    background-color: #ffffff;
+    color: #0F224F;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4);
+    transform: translateY(-1px);
+}
+
+/* mobile stacking */
+@media (max-width: 900px) {
+    .share-experience-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .share-experience-photo {
+        max-width: 260px;
+    }
+}
+
+
+/* ================================
+   OPTIONAL CTA UNDER TESTIMONIALS
+=================================== */
+
+.testimonials-cta {
+    background-color: #ffffff;
+    padding: 8rem 3.5rem 3.5rem;
+}
+
+.testimonials-cta-inner {
+    max-width: 1100px;  /* you can bump this to 1300 too if you want it as wide */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonials-cta-text {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+}
+
+.testimonials-cta-link {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0F224F;
+    line-height: 1.6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.testimonials-cta-link:hover {
+    color: #f97316;
+}
+
+
+
+
+
+
+
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff; /* pure white */
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif; /* or your heading font */
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342; /* your navy */
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;   /* evenly spaced across width */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;                       /* consistent professional size */
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Responsive: tighter and centered on mobile/tablet */
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+/* icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* copyright */
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.empty-space {
+    height: 7rem;
+}

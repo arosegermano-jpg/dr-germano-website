@@ -1,0 +1,702 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* only the top-level list is flex */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+
+
+
+
+
+.services-hero-bg {
+    position: relative;
+    height: 60vh;
+    background-image: url("../services/orlin&cohen copy.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 20, 36, 0.65);
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.services-hero-title {
+    font-family: "Georgia", serif;
+    font-size: 4rem;
+    font-weight: 501;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    font-family: "Georgia", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 900px) {
+    .services-hero-title {
+        font-size: 3rem;
+    }
+}
+
+
+
+
+
+
+
+/* ================================
+   LOCATIONS – SHARED HEADINGS & TEXT
+=================================== */
+
+.locations-heading {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.locations-subtitle {
+    max-width: 720px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 2.5rem;
+}
+
+
+/* ================================
+   OFFICE LOCATIONS (CUBES)
+=================================== */
+
+.locations-offices {
+    padding: 5rem 3.5rem;
+    background-color: #ffffff;
+}
+
+.locations-offices-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.location-card {
+    background-color: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    border-radius: 18px;
+    padding: 1.75rem 1.75rem 1.6rem;
+    box-shadow: 0 10px 28px rgba(15, 34, 79, 0.07);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-4px);
+    border-color: #0F224F;
+    box-shadow: 0 16px 36px rgba(15, 34, 79, 0.12);
+}
+
+.location-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.2rem;
+    color: #0F224F;
+    margin-bottom: 0.4rem;
+}
+
+.location-detail {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.location-phone {
+    font-size: 0.95rem;
+    color: #111827;
+    margin-bottom: 0.95rem;
+}
+
+.location-phone a {
+    color: #0F224F;
+    text-decoration: none;
+}
+
+.location-phone a:hover {
+    text-decoration: underline;
+}
+
+.location-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #0F224F;
+    text-decoration: none;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+/* Hover: underline + bright green */
+.location-link:hover {
+    color: #f97316; /* bright green accent */
+    text-decoration: underline;
+}
+
+
+/* ================================
+   SURGERY & OPERATING LOCATIONS
+=================================== */
+/* ================================
+   SURGICAL HOSPITAL SECTION
+=================================== */
+
+.surgery-locations {
+    padding: 4rem 3.5rem 5rem;
+    background-color: #ffffff;
+}
+
+.surgery-locations-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Thin, centered accent line under the H2 */
+.locations-divider {
+    width: 72px;
+    height: 2px;
+    background-color: #F59E0B; /* same orange accent as other sections */
+    margin-bottom: 2rem;
+}
+
+/* Two-column layout: text left, photo right */
+.surgery-layout {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Text column */
+.surgery-text {
+    flex: 1.1;
+}
+
+.surgery-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+    color: #0F224F;
+    margin-bottom: 0.6rem;
+}
+
+.surgery-detail {
+    font-size: 1.02rem;
+    color: #4B5563;
+    line-height: 1.7;
+}
+
+/* Photo column */
+.surgery-photo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.surgery-photo img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 18px 40px rgba(15, 34, 79, 0.25);
+}
+
+/* Tighter spacing for the Surgical Hospital section */
+.surgery-locations .locations-heading {
+    margin-bottom: 0.4rem;   /* closer title → line */
+}
+
+.surgery-locations .locations-divider {
+    margin-bottom: 1rem;     /* closer line → text */
+}
+
+
+
+/* ================================
+   THIN CTA STRIP – APPOINTMENTS
+=================================== */
+
+.appointment-cta {
+    background-color: #ffffff;
+    border-top: 1px solid #E5E7EB;   /* very light gray borders */
+    border-bottom: 1px solid #E5E7EB;
+    padding: 1.4rem 3.5rem;
+}
+
+.appointment-cta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.appointment-text {
+    font-size: 1.02rem;
+    color: #111827;
+}
+
+/* Outline button reused */
+.btn-outline-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    border: 1.5px solid #0F224F;
+    background-color: #ffffff;
+    color: #0F224F;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-outline-blue:hover {
+    background-color: #0F224F;
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(15, 34, 79, 0.25);
+}
+
+
+/* ================================
+   MAP SECTION – FULL-WIDTH MAP
+=================================== */
+
+.map-section {
+    padding: 0;          /* no side padding so the map can span full width */
+    margin-top: 0;
+    background-color: #ffffff;
+}
+
+/* Full-width iframe */
+.map-embed {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: none;
+}
+
+
+/* ================================
+   WHITE SPACE SPACER BEFORE FOOTER
+=================================== */
+
+.locations-spacer {
+    height: 3rem;
+    background-color: #ffffff;
+}
+
+
+.divider-1 {
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+
+.empty-space1 {
+    height: 7rem;
+}
+/* ================================
+   RESPONSIVE TWEAKS
+=================================== */
+
+@media (max-width: 768px) {
+    .locations-offices,
+    .surgery-locations,
+    .appointment-cta {
+        padding: 3rem 1.5rem;
+    }
+
+    .appointment-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .map-embed {
+        height: 320px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff; /* pure white */
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif; /* or your heading font */
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342; /* your navy */
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;   /* evenly spaced across width */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;                       /* consistent professional size */
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Responsive: tighter and centered on mobile/tablet */
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+/* icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* copyright */
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.empty-space {
+    height: 7rem;
+}

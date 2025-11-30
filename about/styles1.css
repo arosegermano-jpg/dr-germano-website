@@ -1,0 +1,1106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* only style the top-level nav UL */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+/* ===========================
+   ABOUT HERO WITH BACKGROUND
+=========================== */
+
+.about-hero-bg {
+    position: relative;
+    height: 70vh; /* almost full screen */
+    background-image: url("orlin&cohen.png"); /* YOUR O&C PHOTO */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark overlay for readability */
+.about-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 20, 36, 0.65); /* your navy overlay */
+    z-index: 1;
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2; /* above overlay */
+    width: 100%;
+    max-width: 1300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    gap: 50px;
+    color: #ffffff;
+}
+
+/* LEFT TEXT */
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+}
+
+.hero-text h2 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-family: "Georgia", serif;
+}
+
+/* RIGHT IMAGE */
+.hero-headshot img {
+    width: 400px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+    .about-hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-headshot img {
+        width: 300px;
+        margin-top: 30px;
+    }
+
+    .hero-text h1 { font-size: 2.3rem; }
+    .hero-text h2 { font-size: 1.3rem; }
+    .hero-text p  { font-size: 1rem; }
+}
+
+/* ================================
+   PROFESSIONAL BIOGRAPHY SECTION
+================================ */
+
+.bio-section {
+    padding: 5rem 2rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.bio-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bio-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    text-align: left;
+    margin-bottom: 1.8rem;
+}
+
+.bio-paragraph {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #111827;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.bio-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .bio-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .bio-title {
+        font-size: 36px;
+    }
+
+    .bio-paragraph {
+        font-size: 1.3rem;
+    }
+}
+
+/* smooth scrolling for those sidebar links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* MAIN LAYOUT: content + sidebar */
+.about-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 0rem 5rem 3.5rem;
+    display: flex;
+    gap: 3rem;
+}
+
+/* LEFT COLUMN (your existing content) */
+.about-main {
+    flex: 1 1 0;
+}
+
+/* RIGHT COLUMN (sidebar container) */
+.about-sidebar {
+    flex: 0 0 280px;
+}
+
+/* SIDEBAR CARD */
+.sidebar-card {
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    padding: 3rem 1.6rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid #e5e7eb;
+
+    position: sticky;
+    top: 170px;
+}
+
+.sidebar-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #0a2342;
+    margin-bottom: 0.3rem;
+}
+
+.sidebar-role {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 1.1rem;
+}
+
+.sidebar-separator {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 0 0 1.7rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-nav a {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.3rem;
+    color: #0F4F9F;
+    text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+    text-decoration: underline;
+    color: #f97316;
+}
+
+@media (max-width: 900px) {
+    .about-layout {
+        flex-direction: column;
+        padding: 3rem 1.8rem 4rem;
+    }
+
+    .about-sidebar {
+        flex: 1 1 auto;
+        order: -1;
+    }
+
+    .sidebar-card {
+        position: static;
+    }
+}
+
+/* ================================
+   EDUCATION & TRAINING SECTION
+================================ */
+
+.edu-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.edu-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.edu-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.8rem;
+}
+
+.edu-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.edu-list li {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: #111827;
+    margin-bottom: 0.7rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.edu-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #0F224F;
+    font-size: 1.1rem;
+}
+
+.edu-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .edu-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .edu-title {
+        font-size: 36px;
+    }
+
+    .edu-list li {
+        font-size: 1.25rem;
+    }
+}
+
+/* ================================
+   LEADERSHIP ROLES SECTION
+================================ */
+
+.leadership-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.leadership-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.leadership-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.8rem;
+}
+
+.leadership-intro {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #333333;
+    max-width: 900px;
+    margin-bottom: 2rem;
+}
+
+.leadership-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.leadership-list li {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: #111827;
+    margin-bottom: 0.7rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.leadership-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #0F224F;
+    font-size: 1.1rem;
+}
+
+.leadership-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .leadership-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .leadership-title {
+        font-size: 36px;
+    }
+
+    .leadership-list li {
+        font-size: 1.25rem;
+    }
+}
+
+/* ================================
+   PROFESSIONAL MEMBERSHIPS SECTION
+================================ */
+
+.memberships-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.memberships-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.memberships-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.8rem;
+}
+
+.memberships-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.memberships-list li {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: #111827;
+    margin-bottom: 0.7rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.memberships-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #0F224F;
+    font-size: 1.1rem;
+}
+
+.memberships-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .memberships-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .memberships-title {
+        font-size: 36px;
+    }
+
+    .memberships-list li {
+        font-size: 1.25rem;
+    }
+}
+
+/* ================================
+   AWARDS & RECOGNITION SECTION
+================================ */
+
+.awards-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.awards-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.awards-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.2rem;
+}
+
+.awards-intro {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333333;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+}
+
+.awards-badges {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.awards-badges img {
+    height: 100px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    object-fit: contain;
+}
+
+.awards-list {
+    list-style: none;
+    padding-left: 0;
+    padding-bottom: 2rem;
+    margin: 0;
+}
+
+.awards-list li {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: #111827;
+    margin-bottom: 0.7rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.awards-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #0F224F;
+    font-size: 1.1rem;
+}
+
+.awards-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .awards-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .awards-title {
+        font-size: 36px;
+    }
+
+    .awards-badges {
+        justify-content: flex-start;
+    }
+
+    .awards-list li {
+        font-size: 1.25rem;
+    }
+}
+
+/* ================================
+   PATIENT CARE PHILOSOPHY SECTION
+================================ */
+
+.care-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.care-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+}
+
+.care-content {
+    flex: 2;
+    text-align: left;
+}
+
+.care-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.care-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.care-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .care-inner {
+        flex-direction: column;
+    }
+
+    .care-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .care-title {
+        font-size: 36px;
+    }
+
+    .care-photo img {
+        max-width: 100%;
+    }
+}
+
+/* ================================
+   RESEARCH & PUBLICATIONS PREVIEW
+================================ */
+
+.research-preview-section {
+    padding: 1rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.research-preview-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.research-preview-title {
+    font-family: "IM FELL French Canon SC", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.research-preview-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #111827;
+    max-width: 900px;
+    margin-bottom: 2.2rem;
+}
+
+.research-preview-btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border: 2px solid #0F224F;
+    color: #0F224F;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.05rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.research-preview-btn:hover {
+    background-color: #0F224F;
+    color: #ffffff;
+}
+
+.research-preview-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .research-preview-section {
+        padding: 3.5rem 2rem;
+    }
+
+    .research-preview-title {
+        font-size: 36px;
+    }
+}
+
+/* ================================
+   ABOUT PAGE – VIDEO SECTION
+================================ */
+
+.about-video-section {
+    padding: 4rem 1rem 5rem 0rem;
+    background-color: #ffffff;
+}
+
+.about-video-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-video-title {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.5rem;
+}
+
+.about-video-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #111827;
+    max-width: 900px;
+    margin-bottom: 2rem;
+}
+
+.about-video-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.12);
+}
+
+.about-video-wrapper iframe {
+    width: 100%;
+    height: 420px;
+    border: none;
+}
+
+@media (max-width: 900px) {
+    .about-video-title {
+        font-size: 36px;
+    }
+
+    .about-video-wrapper iframe {
+        height: 260px;
+    }
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff;
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342;
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.empty-space {
+    height: 7rem;
+}

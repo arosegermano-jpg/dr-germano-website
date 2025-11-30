@@ -1,0 +1,562 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827;
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.logo-icon {
+    height: 90px;
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* only the top-level nav list should be flex */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+.main-nav a.active {
+    color: #f97316;
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+/* ===========================
+   SERVICES HERO
+=========================== */
+
+.services-hero-bg {
+    position: relative;
+    height: 60vh;
+    background-image: url("../services/orlin&cohen copy.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 20, 36, 0.65);
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.services-hero-title {
+    font-family: "Georgia", serif;
+    font-size: 4rem;
+    font-weight: 501;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    font-family: "Georgia", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 900px) {
+    .services-hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* ================================
+   ABOUT PAGE SIDEBAR (unchanged)
+================================ */
+
+html { scroll-behavior: smooth; }
+
+.about-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 0rem 5rem 3.5rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.about-main {
+    flex: 1 1 0;
+}
+
+.about-sidebar {
+    flex: 0 0 280px;
+}
+
+.sidebar-card {
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    padding: 3rem 1.6rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid #e5e7eb;
+    position: sticky;
+    top: 170px;
+}
+
+.sidebar-name {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #0a2342;
+}
+
+.sidebar-role {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 1.1rem;
+}
+
+.sidebar-separator {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin-bottom: 1.7rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-nav a {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    color: #0F4F9F;
+    text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+    text-decoration: underline;
+    color: #f97316;
+}
+
+@media (max-width: 900px) {
+    .about-layout {
+        flex-direction: column;
+        padding: 3rem 1.8rem 4rem;
+    }
+
+    .about-sidebar { order: -1; }
+    .sidebar-card { position: static; }
+}
+
+/* ================================
+   SERVICES PAGE SECTIONS
+================================ */
+
+.service-section {
+    padding: 4rem 1rem 5rem 0rem;
+}
+
+.service-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.service-title {
+    font-family: "Georgia", serif;
+    font-size: 45px;
+    font-weight: 501;
+    color: #0F224F;
+    margin-bottom: 1.8rem;
+}
+
+.service-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 900px;
+    margin-bottom: 1.3rem;
+}
+
+.service-question {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.service-list {
+    list-style: none;
+    max-width: 900px;
+    padding-left: 0;
+}
+
+.service-list li {
+    font-size: 1.2rem;
+    padding-left: 1.3rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+}
+
+.service-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #0F224F;
+}
+
+.service-divider {
+    width: 100%;
+    max-width: 1500px;
+    height: 2px;
+    background-color: #0F224F;
+    opacity: 0.5;
+    margin: 5rem auto 0;
+}
+
+@media (max-width: 900px) {
+    .service-section { padding: 3.5rem 2rem; }
+    .service-title { font-size: 36px; }
+}
+
+/* ================================
+   SERVICES LAYOUT
+================================ */
+
+.services-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 0rem 5rem 3.5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.services-main {
+    flex: 1 1 0;
+}
+
+.services-sidebar {
+    flex: 0 0 280px;
+}
+
+@media (max-width: 900px) {
+    .services-layout {
+        flex-direction: column;
+        padding: 3rem 1.8rem 4rem;
+    }
+
+    .services-sidebar {
+        order: -1;
+        flex: 1 1 auto;
+    }
+
+    .sidebar-card {
+        position: static;
+    }
+}
+
+.faq-btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border: 2px solid #0F224F;
+    color: #0F224F;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.05rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.faq-btn:hover {
+    background-color: #0F224F;
+    color: #ffffff;
+}
+
+#faq-redirect {
+    padding-top: 0.1rem;
+    padding-bottom: 13rem;
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* ================================
+   AFFILIATIONS
+=================================== */
+
+.affiliations {
+    background-color: #ffffff;
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342;
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;
+    filter: grayscale(100%);
+    opacity: 0.9;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   FOOTER
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    opacity: 0.75;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.footer-copy {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.empty-space {
+    height: 7rem;
+}

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>James A. Germano, M.D. | Orthopedic Surgeon</title>
+
+    <!--what does this do-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to your CSS -->
+    <!--importing any fonts into the doc-->
+    <link href="https://fonts.googleapis.com/css2?family=IM+FELL+French+Canon+SC&family=Inria+Serif:wght@400;700&family=Roboto:wght@300;400;500&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!--thin line above the site-->
+    <section class="home-line">
+        <div class="home-line-top"></div>
+    </section>
+
+
+    <!--creation of the top-->
+    <header class="site-header">
+        <div class="nav-inner">
+
+            <!-- creation of the logo and name for the website-->
+            <!--**NOTE: Upload the hip image and make sure its linked properly-->
+            <a href="index.html" class="logo">
+                <img src="images/germano-hip-icon.png" alt="Hip & Knee logo" class="logo-icon">
+
+                <div class="logo-text">
+                    <div class="logo-name">James A. Germano, M.D.</div>
+                    <div class="logo-tagline">Orthopedic Surgeon · Hip &amp; Knee Reconstruction Specialist</div>
+                </div>
+            </a>
+
+
+
+            <!--creation of the navigation bar and links to their pages-->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="media.html">Research &amp; Media</a></li>
+                    <!-- ⭐ PATIENTS DROPDOWN ADDED HERE ⭐ -->
+                    <li class="nav-item has-dropdown">
+                        <a href="patients.html">
+                            Patients
+                            <span class="nav-caret">▾</span>
+                        </a>
+
+                        <ul class="nav-dropdown">
+                            <li>
+                                <a href="patients.html">
+                                    New &amp; Returning Patient Information
+                                </a>
+                            </li>
+                            <li>
+                                <a href="patient-testimonials.html">
+                                    Patient Testimonials
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ⭐ END PATIENTS DROPDOWN ⭐ -->
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+    <!--creation of the photo carousel-->
+    <section id="home" class="hero">
+        <!--slide 1-->
+        <div class="hero-slide slide-1 active">
+        <div class="hero-content">
+                <!--text on the first slide-->
+                <h1>High-Precision Joint Replacement</h1>
+                <p>Combining experience, surgical accuracy, and advanced operating room systems.</p>
+            </div>
+        </div>
+
+
+        <!--slide 2-->
+        <div class="hero-slide slide-2">
+            <div class="hero-content">
+                <!--text on the second slide-->
+                <h1>Advanced Hip &amp; Knee Reconstruction</h1>
+                <p>Evidence-based surgical care using the latest techniques and technology.</p>
+            </div>
+        </div>
+
+
+        <!--slide 3-->
+        <div class="hero-slide slide-3">
+            <div class="hero-content">
+                <!--text on the third slide-->
+                <h1>Team-Based Surgical Excellence</h1>
+                <p>Collaborative care focused on safety, precision, and long-term joint function</p>
+            </div>
+        </div>
+
+
+
+        <!--dots at the base of the pictures-->
+        <div class="hero-dots">
+            <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+            <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+    </section>
+
+
+
+
+    <!--section to show off the numbers increasing-->
+    <section class="stats-section" id="stats">
+        <div class="stats-container">
+
+            <!--patient reviews section-->
+            <div class="stat">
+                <div class="stat-number" data-target="2500">0</div>
+                <div class="stat-label">PATIENT REVIEWS</div>
+            </div>
+
+            <div class="divider"></div>
+
+
+
+            <!--surgeries performed section-->
+            <div class="stat">
+                <div class="stat-number" data-target="4000">0</div>
+                <div class="stat-label">SURGERIES PERFORMED</div>
+            </div>
+
+            <div class="divider"></div>
+
+
+
+            <!--years experience section-->
+            <div class="stat">
+                <div class="stat-number" data-target="20">0</div>
+                <div class="stat-label">YEARS EXPERIENCE</div>
+            </div>
+
+            <div class="divider"></div>
+
+
+
+            <!--minimally invasive surgeries performed-->
+            <div class="stat">
+                <div class="stat-number" data-target="2000">0</div>
+                <div class="stat-label">MINIMALLY INVASIVE SURGERIES PERFORMED</div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!--intro to the about page section with professional photo-->
+    <section class="about-preview" id="about">
+        <div class="about-wrapper">
+
+            <!--container for the headshot and source-->
+            <div class="about-photo">
+                <img src="images/headshot.jpg" alt="Dr. Germano">
+            </div>
+
+
+            <!--text next to the image-->
+            <div class="about-text">
+                <h2>Dr. James A. Germano</h2>
+                <p>Dr. James A. Germano is a fellowship-trained orthopedic surgeon specializing
+                    in hip and knee replacement, complex revision surgery, and advanced joint
+                    reconstruction.</p>
+                <p>With extensive experience at Northwell Health and Orlin &amp; Cohen, he
+                    focuses on delivering evidence-based, personalized care designed to restore
+                    mobility and improve quality of life.</p>
+
+                <!--button taking you to a new page-->
+                <a href="about.html" class="meet-btn">Meet Dr. Germano</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!--Why choose Dr. Germano section-->
+    <section class="why-choose reverse">
+        <div class="why-wrapper">
+
+            <!--the image container-->
+            <div class="why-image">
+                <img src="images/why-choose.png" alt="Active lifestyle">
+            </div>
+
+
+            <!--the text-->
+            <div class="why-text">
+                <h2>Why Choose Dr. Germano?</h2>
+
+                <p>
+                    Dr. Germano combines advanced surgical training with a personalized,
+                    patient-centered approach to hip and knee care. As a fellowship-trained
+                    orthopedic surgeon with extensive experience in joint replacement, revision
+                    procedures, and modern technology-assisted techniques, he is committed to delivering
+                    safe, predictable, and long-lasting outcomes. His work within Northwell Health and
+                    Orlin & Cohen reflects a dedication to evidence-based medicine, collaborative team
+                    care, and continuous innovation—ensuring every patient receives the highest standard
+                    of orthopedic treatment.
+                </p>
+            </div>
+
+                </div>
+            </section>
+
+
+    <section id="services" class="services-section">
+        <div class="services-inner">
+
+            <h2 class="services-title">Services</h2>
+
+            <div class="services-grid">
+
+                <!-- Hip Replacement -->
+                <a href="services.html#total-hip" class="service-card">
+                    <!--image icon-->
+                    <img class="service-icon" src="images/icon-hip.png" alt="Hip Replacement icon">
+
+                    <!--card text-->
+                    <h3 class="service-title">Hip<br>Replacement</h3>
+
+                    <ul class="service-list">
+                        <li>Total Hip Replacement</li>
+                        <li>Hip Resurfacing</li>
+                        <li>Revision Knee Replacement</li>
+                    </ul>
+                </a>
+
+
+                <!-- Knee Replacement -->
+                <a href="services.html#total-knee" class="service-card">
+                    <!--image icon-->
+                    <img class="service-icon" src="images/icon-knee.png" alt="Knee Replacement icon">
+
+                    <!--card text-->
+                    <h3 class="service-title">Knee<br>Replacement</h3>
+
+                    <ul class="service-list">
+                        <li>Total Knee Replacement</li>
+                        <li>Partial Knee Replacement</li>
+                    </ul>
+                </a>
+
+
+                <!-- Revision Surgery -->
+                <a href="services.html#revision-surgery" class="service-card">
+                    <!--image icon-->
+                    <img class="service-icon" src="images/icon-revision.png" alt="Revision Surgery icon">
+
+                    <!--card text-->
+                    <h3 class="service-title">Revision<br>Surgery</h3>
+
+                    <ul class="service-list">
+                        <li>Complex Revision Surgery</li>
+                        <li>Infection Management</li>
+                        <li>Implant Removal & Reconstruction</li>
+                    </ul>
+                </a>
+
+
+                <!-- Robotic & AI-Assisted -->
+                <a href="services.html#ai-planning" class="service-card">
+                    <!--image icon-->
+                    <img class="service-icon" src="images/icon-robotic.png" alt="Robotic & AI-Assisted icon">
+
+                    <!--card text-->
+                    <h3 class="service-title">Robotic & AI-Assisted<br>Techniques</h3>
+
+                    <ul class="service-list">
+                        <li>Robotic Hip Replacement</li>
+                        <li>Robotic Knee Replacement</li>
+                        <li>Computer-Navigated Surgical Planning</li>
+                    </ul>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--Patient Testimonials Section-->
+    <section id="patient-testimonials" class="testimonials-section">
+        <!-- top navy line -->
+        <div class="testimonials-line"></div>
+
+        <div class="testimonials-hero">
+            <div class="testimonials-content">
+                <h2>Patient<br>Testimonials</h2>
+
+                <a href="patient-testimonials.html" class="testimonials-btn">
+                    Read More
+                </a>
+            </div>
+        </div>
+
+        <!-- bottom navy line -->
+        <div class="testimonials-line"></div>
+    </section>
+
+
+    <!--News Section-->
+    <section id="publications" class="pubs-section">
+        <div class="pubs-inner">
+
+            <h2 class="pubs-title">Publications &amp; Media</h2>
+
+            <div class="pubs-grid">
+                <!-- CARD 1 -->
+                <article class="pub-card">
+                    <div class="pub-tag">Journal Article</div>
+                    <h3 class="pub-heading">
+                        Minimally Invasive Approaches to Total Knee Arthroplasty
+                    </h3>
+                    <p class="pub-meta">
+                        The Journal of Arthroplasty &middot; 2023
+                    </p>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/16927651/" class="pub-btn">View Publication</a>
+                </article>
+
+                <!-- CARD 2 -->
+                <article class="pub-card">
+                    <div class="pub-tag">Journal Article</div>
+                    <h3 class="pub-heading">
+                        Improving Outcomes in Hip Revision Surgery
+                    </h3>
+                    <p class="pub-meta">
+                        Orthopedic Clinics of North America &middot; 2022
+                    </p>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12543228/" class="pub-btn">View Publication</a>
+                </article>
+
+                <!-- CARD 3 -->
+                <article class="pub-card">
+                    <div class="pub-tag">Media Appearance</div>
+                    <h3 class="pub-heading">
+                        Northwell Orthopedic Hospital Feature on News 12
+                    </h3>
+                    <p class="pub-meta">
+                        Television Feature &middot; 2021
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=dUTp8xlJ6W8" class="pub-btn">View Feature</a>
+                </article>
+
+                <!-- CARD 4 -->
+                <article class="pub-card">
+                    <div class="pub-tag">Media Appearance</div>
+                    <h3 class="pub-heading">
+                        Advances in Robotic Hip and Knee Replacement
+                    </h3>
+                    <p class="pub-meta">
+                        Podcast Interview &middot; 2020
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=dUTp8xlJ6W8" class="pub-btn">View Feature</a>
+                </article>
+            </div>
+
+        </div>
+
+        <div class="readmore-container">
+            <a href="media.html" class="readmore-btn">Read More</a>
+        </div>
+
+    </section>
+
+
+
+    <!--Image of LIJ & appointments section-->
+    <!-- Full-width LIJ hospital image strip -->
+    <section class="hospital-strip"></section>
+
+    <!-- Appointments & Locations section -->
+    <section id="appointments" class="appointments-panel">
+        <div class="appointments-inner">
+
+            <h2>Ready to Schedule an Appointment?</h2>
+
+            <p class="appointments-subtitle">
+                Existing and new patients can book securely through Northwell Health’s scheduling system.
+            </p>
+
+            <a href="https://www.northwell.edu/find-care/find-a-doctor/dr-james-a-germano-md-1811048838"
+               class="appointments-btn"
+               target="_blank" rel="noopener">
+                Make an Appointment
+            </a>
+
+            <div class="appointments-info-row">
+                <!-- Pill 1: Office locations -->
+                <div class="appt-pill">
+                    <div class="pill-label">Office Locations</div>
+                    <p>
+                        1101 Stewart Avenue, Garden City, NY 11530<br>
+                        1728 Sunrise Highway, Merrick, NY 11566<br>
+                        3480 Veterans Memorial Highway, Bohemia, NY 11716
+                    </p>
+                </div>
+
+                <!-- Pill 2: Surgical hospital -->
+                <div class="appt-pill">
+                    <div class="pill-label">Surgical Hospital</div>
+                    <p>
+                        Long Island Jewish Valley Stream<br>
+                        Northwell Health
+                    </p>
+                </div>
+
+                <!-- Pill 3: Questions / phone -->
+                <div class="appt-pill">
+                    <div class="pill-label">Questions About Your Appointment?</div>
+                    <p>
+                        Call the Orlin &amp; Cohen office<br>
+                        <span class="pill-phone">(516)-536-2800</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!--logos & medical associations-->
+    <!-- Affiliations Section -->
+    <section class="affiliations">
+        <div class="affiliations-inner">
+            <p class="affiliations-label"></p>
+            <div class="affiliations-logos">
+                <img src="images/logo1.png"
+                     alt="American Association of Hip and Knee Surgeons (AAHKS)">
+
+                <img src="images/logo2.png"
+                     alt="American Academy of Orthopaedic Surgeons (AAOS)">
+
+                <img src="images/logo3.png"
+                     alt="American Board of Orthopaedic Surgery (ABOS)">
+
+                <img src="images/logo4.png"
+                     alt="Northwell Health">
+
+                <img src="images/logo5.png"
+                     alt="Northwell Long Island Jewish Valley Stream">
+
+                <img src="images/logo6.png"
+                     alt="Orlin &amp; Cohen Orthopedic Group">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--socials & copywrite-->
+
+    <footer class="site-footer">
+
+        <div class="footer-line"></div>
+
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/jamesgermanomd/" target="_blank" aria-label="Instagram">
+                <img src="images/icon-instagram.png" alt="Instagram">
+            </a>
+
+            <a href="https://www.linkedin.com/in/james-germano-md/" target="_blank" aria-label="LinkedIn">
+                <img src="images/icon-linkedin.png" alt="LinkedIn">
+            </a>
+
+            <a href="https://www.youtube.com/@orlincohen" target="_blank" aria-label="YouTube">
+                <img src="images/icon-youtube.png" alt="YouTube">
+            </a>
+        </div>
+
+        <p class="footer-copy">
+            © 2025 James A. Germano, M.D. All Rights Reserved.<br>
+            Website by Abigail Germano
+        </p>
+
+    </footer>
+
+
+
+
+
+
+
+    <!--link your javascript to the framework-->
+<script src="script.js"></script>
+
+</body>
+</html>

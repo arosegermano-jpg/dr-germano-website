@@ -1,0 +1,816 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ================================
+   HEADER / NAVBAR
+=================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 2px solid #111827; /* navy line under header */
+}
+
+.nav-inner {
+    width: 100%;
+    margin: 0;
+    padding: 0.6rem 3.5rem; /* equal padding left/right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================================
+   LOGO AREA
+=================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    text-decoration: none;
+}
+
+/* circular “badge” around icon */
+.logo-mark {
+    width: 115px;
+    height: 115px;
+    border-radius: 999px;
+    border: 2px solid #123765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* hip icon inside circle */
+.logo-icon {
+    height: 90px;  /* tweak this if you want bigger/smaller */
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: "IM FELL French Canon SC", Georgia, serif;
+    font-weight: 550;
+    font-size: 30px;
+    letter-spacing: 0.0em;
+    text-transform: none;
+    color: #0F224F;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #111827;
+}
+
+.logo-tagline {
+    font-family: "Joan", "Inria Serif", "Times New Roman", serif;
+    font-size: 14px;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+/* ================================
+   NAV LINKS
+=================================== */
+
+/* ONLY style the top-level nav UL */
+.main-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-family: "Roboto Condensed", "Roboto", system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+/* underline animation base */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #123765;
+    transition: width 0.2s ease;
+}
+
+/* hover = navy underline + darker text */
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: #111827;
+}
+
+/* active page link: orange text + orange underline */
+.main-nav a.active {
+    color: #f97316; /* bright orange */
+}
+
+.main-nav a.active::after {
+    width: 100%;
+    background-color: #f97316;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+    .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ================================
+   PATIENTS DROPDOWN
+=================================== */
+
+/* Make sure the Patients <li> can position a dropdown */
+.main-nav li.nav-item.has-dropdown {
+    position: relative;
+}
+
+/* little arrow next to "Patients" */
+.nav-caret {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+}
+
+/* the dropdown menu itself */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;          /* directly under the Patients link */
+    left: 0;
+    margin-top: 0rem;
+
+    list-style: none;
+    padding: 0.6rem 0;
+    min-width: 260px;
+
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+
+    display: none;      /* hidden by default */
+    z-index: 1200;
+}
+
+/* show dropdown when hovering the Patients list item */
+.main-nav li.nav-item.has-dropdown:hover .nav-dropdown {
+    display: block;
+}
+
+/* links inside dropdown */
+.nav-dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: "Roboto", system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* hover effect in dropdown */
+.nav-dropdown li a:hover {
+    background-color: #f3f4f6;
+    color: #123765;
+}
+
+/* ===========================
+   SERVICES HERO (OTHER PAGE)
+=========================== */
+
+.services-hero-bg {
+    position: relative;
+    height: 60vh;
+    background-image: url("../services/orlin&cohen copy.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 20, 36, 0.65);
+    z-index: 1;
+}
+
+.services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.services-hero-title {
+    font-family: "Georgia", serif;
+    font-size: 4rem;
+    font-weight: 501;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 15px;
+    font-family: "Georgia", "Roboto", system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 900px) {
+    .services-hero-title {
+        font-size: 3rem;
+    }
+}
+
+/* ================================
+   PATIENT HERO
+=================================== */
+
+.patient-hero {
+    padding: 4rem 3.5rem 3rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.patient-hero-inner {
+    max-width: 1300px;   /* was 1100px */
+    margin: 0 auto;
+}
+
+.patient-hero h1 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 1rem;
+}
+
+.patient-hero p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+}
+
+/* ================================
+   3-STEP TIMELINE
+=================================== */
+
+.patient-timeline {
+    padding: 3rem 3.5rem 4rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.timeline-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+.timeline-inner h2 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 2rem;
+}
+
+.timeline-track {
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 2.4rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #e5e7eb;
+    z-index: 1;
+}
+
+.timeline-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-step {
+    position: relative;
+}
+
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background-color: #0F224F;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 3px #0F224F;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-step h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #0F224F;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+}
+
+.timeline-step p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .timeline-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-line {
+        display: none;
+    }
+}
+
+/* ================================
+   NEW VS RETURNING PATIENTS
+=================================== */
+
+.patient-columns {
+    padding: 4rem 3.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.patient-columns-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+}
+
+.patient-column h2 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 1rem;
+}
+
+.patient-blurb {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.patient-column h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #0F224F;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.patient-column ul {
+    margin-left: 1.2rem;
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.patient-column ul li {
+    margin-bottom: 0.6rem;
+}
+
+.patient-links {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #6b7280;
+    margin-top: 1.25rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .patient-columns-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+.space {
+    height: 50px;
+}
+
+/* ================================
+   PATIENT IMAGE BREAK
+=================================== */
+
+.patient-image-break {
+    padding: 3rem 3.5rem 3rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.patient-image-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+.patient-image-inner img {
+    display: block;
+    width: 100%;
+    height: 360px;       /* this height works PERFECTLY for your image */
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 900px) {
+    .patient-image-inner img {
+        height: 240px;
+    }
+}
+
+/* ================================
+   SURGERY SECTIONS + SIDECAR
+=================================== */
+
+.surgery-layout {
+    padding: 4rem 3.5rem 4.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.surgery-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(260px, 1fr);
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.surgery-section h2 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    color: #0F224F;
+    font-size: 45px;
+    margin-bottom: 0.75rem;
+}
+
+.surgery-section p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.surgery-link {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.surgery-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 2.25rem 0;
+}
+
+/* sticky sidecar */
+.surgery-sidecar {
+    position: sticky;
+    top: 120px; /* adjust if it collides with header */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sidecar-box {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.5rem;
+    background-color: #f9fafb;
+}
+
+.sidecar-box h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #0F224F;
+    margin-bottom: 0.75rem;
+}
+
+.sidecar-box p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.sidecar-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+}
+
+.sidecar-list li + li {
+    margin-top: 0.4rem;
+}
+
+.sidecar-list a {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #123765;
+    text-decoration: none;
+}
+
+.sidecar-list a:hover {
+    text-decoration: underline;
+    color: #f97316;
+}
+
+.sidecar-note {
+    font-family: Georgia, serif;
+    font-size: 1.3rem;
+    color: #6b7280;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .surgery-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .surgery-sidecar {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+
+/* ================================
+   BLUE PATIENT EDUCATION SECTION
+=================================== */
+
+.patient-education {
+    padding: 4rem 3.5rem 4.5rem;
+    background-color: #0F224F;
+    color: #ffffff;
+}
+
+.patient-education-inner {
+    max-width: 1300px;  /* was 1100px */
+    margin: 0 auto;
+}
+
+.patient-education h2 {
+    font-family: Georgia, serif;
+    font-weight: 501;
+    font-size: 45px;
+    margin-bottom: 1rem;
+}
+
+.education-intro {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #e5e7eb;
+    margin-bottom: 2.25rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.education-card {
+    border-radius: 0.75rem;
+    border: 1px solid rgba(249, 250, 251, 0.28);
+    padding: 1.5rem 1.4rem;
+    background: rgba(15, 34, 79, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+.education-card h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.education-card p {
+    font-family: Roboto, serif;
+    font-size: 1.4rem;
+    color: #e5e7eb;
+    margin-bottom: 0.9rem;
+    line-height: 1.6;
+}
+
+.education-card a {
+    font-family: Roboto, serif;
+    font-size: 1.3rem;
+    color: #f97316;
+    text-decoration: none;
+}
+
+.education-card a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================
+   TOP NAVY STRIP
+=================================== */
+
+.home-line-top {
+    height: 9px;
+    width: 100%;
+    background-color: #0F224F;
+}
+
+/* ================================
+   HOSPITAL IMAGE STRIP
+=================================== */
+
+.hospital-strip {
+    width: 100%;
+    height: 430px;
+    background-image: url("../about/exterior1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 7rem;
+}
+
+/* Affiliations strip – luxury white presentation */
+.affiliations {
+    background-color: #ffffff; /* pure white */
+    padding-top: 10rem;
+}
+
+.affiliations-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.affiliations-label {
+    font-family: "Playfair Display", serif; /* or your heading font */
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a2342; /* your navy */
+    margin-bottom: 30px;
+}
+
+.affiliations-logos {
+    display: flex;
+    justify-content: space-between;   /* evenly spaced across width */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.affiliations-logos img {
+    height: 42px;                       /* consistent professional size */
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.9;
+    transition: all 0.22s ease;
+}
+
+.affiliations-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Responsive: tighter and centered on mobile/tablet */
+@media (max-width: 900px) {
+    .affiliations-logos {
+        justify-content: center;
+        gap: 28px 40px;
+    }
+
+    .affiliations-logos img {
+        height: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .affiliations-label {
+        font-size: 0.75rem;
+        margin-bottom: 24px;
+    }
+}
+
+/* ================================
+   FOOTER STYLES
+=================================== */
+
+.site-footer {
+    padding: 2rem 0rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.footer-line {
+    width: 100%;
+    height: 2px;
+    background-color: #e5e7eb;
+    margin-bottom: 2.5rem;
+}
+
+/* icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-icons img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* copyright */
+.footer-copy {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.empty-space {
+    height: 7rem;
+}
